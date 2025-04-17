@@ -164,7 +164,6 @@ public:
     }
 };
 
-// Необходимо отправить определённую сумму денег, но мы не знаем, какой способ доступен
 void Request(PaymentHandler* h, Receiver* receiver)
 {
     h->Handle(receiver);
@@ -178,7 +177,6 @@ int main()
     PaymentHandler* cryptoPaymentHandler = new CryptoPaymentHandler();
     PaymentHandler* paypalPaymentHandler = new PayPalPaymentHandler();
 
-    // PayPal → Crypto → MoneyPay → Cash → BankPayment
     paypalPaymentHandler->SetHandler(cryptoPaymentHandler);
     cryptoPaymentHandler->SetHandler(moneyPaymentHandler);
     moneyPaymentHandler->SetHandler(cashPaymentHandler);
